@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Preparation Roadmap</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: #aaa;
+            font-size: 1.2em;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Home Page Grid */
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 20px 0;
+        }
+
+        .roadmap-card {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            padding: 30px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        .roadmap-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(76, 175, 80, 0.5);
+        }
+
+        .roadmap-card h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .roadmap-card p {
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+
+        /* Detail Pages */
+        .breadcrumb {
+            color: #888;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb span {
+            color: #4CAF50;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .breadcrumb span:hover {
+            color: #45a049;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #4CAF50;
+        }
+
+        .description {
+            color: #bbb;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .topics-list {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .topics-list h3 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .topic-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border-left: 4px solid #4CAF50;
+            transition: all 0.3s;
+        }
+
+        .topic-item:hover {
+            background: rgba(76, 175, 80, 0.1);
+            transform: translateX(5px);
+        }
+
+        .topic-item a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+        }
+
+        .topic-item a:hover {
+            color: #4CAF50;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .roadmap-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Interview Preparation Roadmap</h1>
+            <p class="subtitle">Your comprehensive guide to cracking technical interviews</p>
+        </header>
+
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <div class="roadmap-grid">
+                <div class="roadmap-card" onclick="showPage('datastructures')">
+                    <h2>📊 Data Structures</h2>
+                    <p>Master fundamental and advanced data structures</p>
+                </div>
+
+                <div class="roadmap-card" onclick="showPage('algorithms')">
+                    <h2>⚡ Algorithms</h2>
+                    <p>Learn essential algorithmic techniques and patterns</p>
+                </div>
+
+                <div class="roadmap-card" onclick="showPage('oopdesign')">
+                    <h2>🎨 OOP Design</h2>
+                    <p>Object-oriented programming principles and patterns</p>
+                </div>
+
+                <div class="roadmap-card" onclick="showPage('cssubjects')">
+                    <h2>💻 CS Subjects</h2>
+                    <p>Core computer science fundamentals</p>
+                </div>
+
+                <div class="roadmap-card" onclick="showPage('systemdesign')">
+                    <h2>🏗️ System Design</h2>
+                    <p>Design scalable and robust systems</p>
+                </div>
+
+                <div class="roadmap-card" onclick="showPage('softwareeng')">
+                    <h2>🔧 Software Engineering</h2>
+                    <p>Software development best practices</p>
+                </div>
+
+                <div class="roadmap-card" onclick="showPage('managerial')">
+                    <h2>👔 Managerial Round</h2>
+                    <p>Behavioral and leadership questions</p>
+                </div>
+
+                <div class="roadmap-card" onclick="showPage('hrround')">
+                    <h2>🤝 HR Round</h2>
+                    <p>HR interview questions and tips</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Structures Page -->
+        <div id="datastructures" class="page">
+            <div class="breadcrumb">
+                <span onclick="showPage('home')">Home</span> / Data Structures
+            </div>
+            <h2 class="section-title">📊 Data Structures</h2>
+            <p class="description">Master the fundamental building blocks of programming. Understanding data structures is crucial for writing efficient code and solving complex problems.</p>
+            
+            <div class="topics-list">
+                <h3>Core Topics</h3>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/dsa/array-data-structure-guide/" target="_blank">Array - Linear collection of elements</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/dsa/string-data-structure/" target="_blank">String - Character arrays and string manipulation</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/dsa/linked-list-data-structure/" target="_blank">Linked List - Dynamic sequential data structure</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/dsa/stack-data-structure/" target="_blank">Stack - LIFO (Last In First Out) structure</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/dsa/queue-data-structure/" target="_blank">Queue - FIFO (First In First Out) structure</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/dsa/introduction-to-tree-data-structure/" target="_blank">Tree - Hierarchical data structure</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/dsa/binary-search-tree-data-structure/" target="_blank">Binary Search Tree - Ordered tree structure</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/dsa/heap-data-structure/" target="_blank">Heap - Complete binary tree for priority operations</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/dsa/hashing-data-structure/" target="_blank">Hashing - Key-value pair storage with O(1) lookup</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/dsa/graph-data-structure-and-algorithms/" target="_blank">Graph - Network of nodes and edges</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/dsa/matrix/" target="_blank">Matrix - 2D array structure</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/dsa/trie-insert-and-search/" target="_blank">Trie - Prefix tree for string operations</a>
+                </div>
+            </div>
+            <button class="back-btn" onclick="showPage('home')">← Back to Roadmap</button>
+        </div>
+
+        <!-- Algorithms Page -->
+        <div id="algorithms" class="page">
+            <div class="breadcrumb">
+                <span onclick="showPage('home')">Home</span> / Algorithms
+            </div>
+            <h2 class="section-title">⚡ Algorithms</h2>
+            <p class="description">Learn problem-solving techniques and algorithmic patterns that form the foundation of efficient programming.</p>
+            
+            <div class="topics-list">
+                <h3>Algorithm Categories</h3>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/fundamentals-of-algorithms/" target="_blank">Analysis of Algorithm - Time and space complexity</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/searching-algorithms/" target="_blank">Searching - Linear, binary, and advanced search techniques</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/sorting-algorithms/" target="_blank">Sorting - QuickSort, MergeSort, HeapSort, and more</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/greedy-algorithms/" target="_blank">Greedy Algorithms - Optimal local choices</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/dynamic-programming/" target="_blank">Dynamic Programming - Optimal substructure problems</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/backtracking-algorithms/" target="_blank">Backtracking - Recursive solution exploration</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/divide-and-conquer/" target="_blank">Divide and Conquer - Breaking problems into subproblems</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/geometric-algorithms/" target="_blank">Geometric Algorithms - Computational geometry</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/mathematical-algorithms/" target="_blank">Mathematical Algorithms - Number theory and calculations</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/" target="_blank">Graph Algorithms - BFS, DFS, shortest path, MST</a>
+                </div>
+            </div>
+            <button class="back-btn" onclick="showPage('home')">← Back to Roadmap</button>
+        </div>
+
+        <!-- OOP Design Page -->
+        <div id="oopdesign" class="page">
+            <div class="breadcrumb">
+                <span onclick="showPage('home')">Home</span> / OOP Design
+            </div>
+            <h2 class="section-title">🎨 OOP Design</h2>
+            <p class="description">Master object-oriented programming principles and design patterns for writing maintainable and scalable code.</p>
+            
+            <div class="topics-list">
+                <h3>OOP Concepts</h3>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/cpp/what-is-inheritance-1/" target="_blank">Inheritance - Code reusability through parent-child relationships</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/cpp/cpp-polymorphism/" target="_blank">Polymorphism - Multiple forms of methods and objects</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/cpp/encapsulation-in-cpp/" target="_blank">Encapsulation - Data hiding and protection</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/cpp/abstraction-in-cpp/" target="_blank">Abstraction - Hiding implementation details</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/interview-prep/oops-interview-questions/" target="_blank">Interview Questions - Common OOP interview scenarios</a>
+                </div>
+            </div>
+            <button class="back-btn" onclick="showPage('home')">← Back to Roadmap</button>
+        </div>
+
+        <!-- CS Subjects Page -->
+        <div id="cssubjects" class="page">
+            <div class="breadcrumb">
+                <span onclick="showPage('home')">Home</span> / CS Subjects
+            </div>
+            <h2 class="section-title">💻 CS Subjects</h2>
+            <p class="description">Essential computer science fundamentals that every software engineer should know.</p>
+            
+            <div class="topics-list">
+                <h3>Core CS Topics</h3>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/operating-systems/operating-systems/" target="_blank">Operating Systems - Process management, memory, scheduling</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/computer-networks/computer-network-tutorials/" target="_blank">Computer Networks - TCP/IP, HTTP, networking protocols</a>
+                </div>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/dbms/dbms/" target="_blank">DBMS - Database design, SQL, normalization, transactions</a>
+                </div>
+            </div>
+            <button class="back-btn" onclick="showPage('home')">← Back to Roadmap</button>
+        </div>
+
+        <!-- System Design Page -->
+        <div id="systemdesign" class="page">
+            <div class="breadcrumb">
+                <span onclick="showPage('home')">Home</span> / System Design
+            </div>
+            <h2 class="section-title">🏗️ System Design</h2>
+            <p class="description">Learn to design scalable, reliable, and maintainable systems for real-world applications.</p>
+            
+            <div class="topics-list">
+                <h3>System Design Topics</h3>
+                <div class="topic-item">
+                    <a href="https://www.geeksforgeeks.org/system-design/getting-started-with-system-design/" target="_blank">Basics of System Design - Fundamentals and principles</a>
+                </div>
+                <div class="topic-item"><a href="https://www.geeksforgeeks.org/system-design/what-is-scalability/">Scalability - Horizontal and vertical scaling strategies</a></div>
+                <div class="topic-item"><a href="https://www.geeksforgeeks.org/system-design/what-is-high-level-design-learn-system-design/">High Level Design (HLD) - Architecture and component design</a></div>
+                    <div class="topic-item"><a href="https://www.geeksforgeeks.org/system-design/which-database-to-choose-while-designing-a-system-sql-or-nosql/">Databases - SQL vs NoSQL, sharding, replication</a></div>
+                    <div class="topic-item"><a href="https://www.geeksforgeeks.org/system-design/unified-modeling-language-uml-introduction/">UML Diagram - Visual system modeling</a></div>
+                    <div class="topic-item"><a href="https://www.geeksforgeeks.org/system-design/what-is-low-level-design-or-lld-learn-system-design/">Low Level Design (LLD) - Detailed component design</a></div>
+                    <div class="topic-item"><a href="https://www.geeksforgeeks.org/software-testing/types-software-testing/">Testing - Unit, integration, and system testing</a></div>
+                    <div class="topic-item"><a href="https://www.geeksforgeeks.org/system-design/most-commonly-asked-system-design-interview-problems-questions/">Interview Questions - Common system design scenarios</a></div>
+            </div>
+            <button class="back-btn" onclick="showPage('home')">← Back to Roadmap</button>
+        </div>
+
+        <!-- Software Engineering Page -->
+        <div id="softwareeng" class="page">
+            <div class="breadcrumb">
+                <span onclick="showPage('home')">Home</span> / Software Engineering
+            </div>
+            <h2 class="section-title">🔧 Software Engineering</h2>
+            <p class="description">Best practices and methodologies for professional software development.</p>
+            
+            <div class="topics-list">
+                <h3>Software Engineering Practices</h3>
+                <div class="topic-item"><a href="https://www.geeksforgeeks.org/software-engineering/software-development-life-cycle-sdlc/">Software Development Life Cycle - SDLC phases and models</a></div>
+                <div class="topic-item"><a href="https://www.geeksforgeeks.org/principles-of-software-design/">Software Design Principles - SOLID, DRY, KISS principles</a></div>
+                <div class="topic-item"><a href="https://www.geeksforgeeks.org/software-testing-life-cycle-stlc/">Software Testing - Testing strategies and methodologies</a></div>
+                <div class="topic-item"><a href="https://www.geeksforgeeks.org/version-control-systems/">Version Control - Git workflows and best practices</a></div>
+                <div class="topic-item"><a href="https://www.geeksforgeeks.org/types-of-software-architecture-patterns/">Software Architecture - Architectural patterns and styles</a></div>
+                <div class="topic-item"><a href="https://www.geeksforgeeks.org/software-design-patterns/">Design Patterns - Creational, structural, behavioral patterns</a></div>
+                <div class="topic-item"><a href="https://www.geeksforgeeks.org/software-engineering-system-configuration-management/">System Configuration Management - Configuration and deployment</a></div>
+                <div class="topic-item"><a href="https://www.geeksforgeeks.org/software-engineering-interview-questions-and-answers/">Interview Questions - Software engineering concepts</a></div>
+            </div>
+            <button class="back-btn" onclick="showPage('home')">← Back to Roadmap</button>
+        </div>
+
+        <!-- Managerial Round Page -->
+        <div id="managerial" class="page">
+            <div class="breadcrumb">
+                <span onclick="showPage('home')">Home</span> / Managerial Round
+            </div>
+            <h2 class="section-title">👔 Managerial Round</h2>
+            <p class="description">Prepare for behavioral interviews and demonstrate your leadership and communication skills.</p>
+            
+            <div class="topics-list">
+                <h3>Managerial Topics</h3>
+                <div class="topic-item"><a href="https://www.geeksforgeeks.org/interview-experiences/managerial-interview-questions/">Managerial Interview Questions - Common behavioral questions</a></div>
+                <div class="topic-item"><a href="https://www.geeksforgeeks.org/interview-experiences/gd-topics-for-placement/">Group Discussions - Effective communication in teams</a></div>
+                <div class="topic-item"><a href="https://www.geeksforgeeks.org/aptitude/aptitude-questions-and-answers/">Aptitude and Reasoning - Problem-solving and logical thinking</a></div>
+            </div>
+            <button class="back-btn" onclick="showPage('home')">← Back to Roadmap</button>
+        </div>
+
+        <!-- HR Round Page -->
+        <div id="hrround" class="page">
+            <div class="breadcrumb">
+                <span onclick="showPage('home')">Home</span> / HR Round
+            </div>
+            <h2 class="section-title">🤝 HR Round</h2>
+            <p class="description">Master the final hurdle - showcase your personality, culture fit, and professional goals.</p>
+            
+            <div class="topics-list">
+                <h3>HR Interview Topics</h3>
+                <div class="topic-item"><a href="https://www.geeksforgeeks.org/hr/hr-interview-questions/">Hr interview questions all</a></div>
+                
+            </div>
+            <button class="back-btn" onclick="showPage('home')">← Back to Roadmap</button>
+        </div>
+    </div>
+<footer style="text-align:center; padding: 15px; font-size: 14px; color:#666;">
+    <span>Made with ❤️ using <strong>Tech With Sidhu</strong></span>
+</footer>
+
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            const selectedPage = document.getElementById(pageId);
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>
